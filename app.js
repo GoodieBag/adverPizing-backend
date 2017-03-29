@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
+var cors = require('cors');
 var LocalStrategy = require('passport-local').Strategy;
 
 
@@ -23,6 +24,10 @@ db.once('open', function () {
 });
 
 var app = express();
+
+
+app.use(cors());
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
