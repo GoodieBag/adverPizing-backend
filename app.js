@@ -13,6 +13,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var index = require('./routes/index');
 var users = require('./routes/users');
 var statusRouter = require('./routes/status');
+var noticeBoardRouter = require('./routes/noticeBoards');
 
 var config = require('./config');
 mongoose.connect(config.mongoUrl);
@@ -50,8 +51,9 @@ passport.deserializeUser(User.deserializeUser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/status', statusRouter);
 app.use('/users', users);
+app.use('/noticeboards',noticeBoardRouter);
+app.use('/status', statusRouter);
 
 
 // catch 404 and forward to error handler
