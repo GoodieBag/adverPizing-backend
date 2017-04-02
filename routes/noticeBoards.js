@@ -11,6 +11,7 @@ noticeBoardRouter.route('/')
         NoticeBoards.create(req.body, function(err, noticeBoard) {
             if (err) throw err;
             console.log("Information updated");
+            var _id = noticeBoard._id;
             res.json({
                 "message": noticeBoard,
                 "id": _id
