@@ -12,7 +12,7 @@ noticeBoardRouter.route('/')
             if (err) throw err;
             console.log("Information updated");
             res.json({
-                "message": noticeBoards,
+                "message": noticeBoard,
                 "id": _id
             });
         });
