@@ -32,6 +32,14 @@ noticeBoardRouter.route('/')
         });
     });
 
+noticeBoardRouter.route('/firstTen')
+.get(function(req,res,next){
+    NoticeBoards.find({}).sort('-createdAt').limit(10).exec(function(err, docs) {
+        if(err) throw err;
+        res.json(docs);
+    });
+});
+
 noticeBoardRouter.route('/:noticeBoardId')
     .put(Verify.verifyOrdinaryUser, Verify.verifyAdmin, function(req, res, next) {
         NoticeBoards.findByIdAndUpdate(req.params.noticeBoardId, {
